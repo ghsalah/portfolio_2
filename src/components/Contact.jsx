@@ -5,11 +5,31 @@ import profileImg from '../assets/banner/aboobacker_salah_1.jpg';
 
 const Contact = () => {
   const contactInfo = [
-    { icon: <Phone size={20} />, label: 'Phone', value: '+971 55 482 0967', link: 'tel:+971554820967' },
-    { icon: <Mail size={20} />, label: 'Email', value: 'aboobackersalah33@gmail.com', link: 'mailto:aboobackersalah33@gmail.com' },
-    { icon: <MapPin size={20} />, label: 'Location', value: 'Dubai, UAE', link: null },
-    { icon: <ExternalLink size={20} />, label: 'LinkedIn', value: 'linkedin.com/in/salah', link: 'https://linkedin.com' },
-  ];
+  { 
+    icon: <Phone size={20} />, 
+    label: 'Phone (India)', 
+    value: '+91 8590660040', 
+    link: 'tel:+918590660040' 
+  },
+  { 
+    icon: <Mail size={20} />, 
+    label: 'Email', 
+    value: 'aboobackersalah33@gmail.com', 
+    link: 'mailto:aboobackersalah33@gmail.com' 
+  },
+  { 
+    icon: <MapPin size={20} />, 
+    label: 'Location (India)', 
+    value: 'Kerala, India', 
+    link: null 
+  },
+  { 
+    icon: <ExternalLink size={20} />, 
+    label: 'LinkedIn', 
+    value: 'Aboobacker salah', 
+    link: 'https://www.linkedin.com/in/aboobacker-salah-b51b08383/' 
+  },
+];
 
   return (
     <section id="contact" style={{ background: 'var(--bg-secondary)' }}>
