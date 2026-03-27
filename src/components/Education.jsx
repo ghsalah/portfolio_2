@@ -54,7 +54,7 @@ const Education = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--accent)',
+              color: 'var(--text-primary)',
               marginBottom: '20px',
             }}>
               <GraduationCap size={26} />
@@ -69,8 +69,8 @@ const Education = () => {
             </p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '14px' }}>
-              <Calendar size={14} color="var(--accent)" />
-              <span style={{ fontSize: '0.85rem', color: 'var(--accent)', fontWeight: '600' }}>{edu.period}</span>
+              <Calendar size={14} color="var(--text-primary)" />
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: '600' }}>{edu.period}</span>
             </div>
 
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: '1.7' }}>

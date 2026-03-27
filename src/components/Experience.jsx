@@ -77,7 +77,7 @@ const Experience = () => {
               left: 0,
               width: '4px',
               height: '100%',
-              background: 'linear-gradient(180deg, #00e87a, #00c4ff)',
+              background: 'var(--text-primary)',
               borderRadius: '4px 0 0 4px',
             }} />
 
@@ -85,12 +85,12 @@ const Experience = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '12px', marginBottom: '20px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <Briefcase size={18} color="var(--accent)" />
+                  <Briefcase size={18} color="var(--text-primary)" />
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--text-primary)' }}>
                     {exp.title}
                   </h3>
                 </div>
-                <p style={{ fontSize: '1rem', color: 'var(--accent)', fontWeight: '600', paddingLeft: '28px' }}>
+                <p style={{ fontSize: '1rem', color: 'var(--text-primary)', fontWeight: '600', paddingLeft: '28px' }}>
                   {exp.company} · {exp.location}
                 </p>
               </div>
@@ -105,7 +105,7 @@ const Experience = () => {
                   background: 'var(--accent-dim)',
                   border: '1px solid var(--accent-border)',
                   borderRadius: '20px',
-                  color: 'var(--accent)',
+                  color: 'var(--text-primary)',
                   fontSize: '0.75rem',
                   fontWeight: '600',
                 }}>
@@ -118,7 +118,7 @@ const Experience = () => {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {exp.responsibilities.map((r, j) => (
                 <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                  <ChevronRight size={16} color="var(--accent)" style={{ marginTop: '3px', flexShrink: 0 }} />
+                  <ChevronRight size={16} color="var(--text-primary)" style={{ marginTop: '3px', flexShrink: 0 }} />
                   {r}
                 </li>
               ))}

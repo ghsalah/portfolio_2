@@ -4,7 +4,16 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
-        return localStorage.getItem('portfolio-theme') || 'dark';
+        const stored = localStorage.getItem('portfolio-theme');
+        if (stored) return stored;
+
+        // Default to system preference so the first-load matches "clean light" layouts by default.
+        const prefersDark =
+          typeof window !== 'undefined' &&
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        return prefersDark ? 'dark' : 'light';
     });
 
     useEffect(() => {

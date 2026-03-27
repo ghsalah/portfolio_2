@@ -27,26 +27,26 @@ function App() {
     <ThemeProvider>
       <div className="App">
         <Navbar />
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Education />
-        <Skills />
-        <Certifications />
-        <Languages />
-        <Contact />
-        <Footer />
+        <div className="page-content">
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <Education />
+          <Skills />
+          <Certifications />
+          <Languages />
+          <Contact />
+          <Footer />
+        </div>
 
-        {showScrollTop && (
-          <button
-            className="scroll-top"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label="Scroll to top"
-          >
-            <ArrowUp size={20} />
-          </button>
-        )}
+        <button
+          className={`scroll-top ${showScrollTop ? 'visible' : ''}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+        >
+          <ArrowUp size={24} />
+        </button>
       </div>
     </ThemeProvider>
   );

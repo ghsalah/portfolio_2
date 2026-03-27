@@ -48,7 +48,7 @@ const Certifications = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--accent)',
+              color: 'var(--text-primary)',
               flexShrink: 0,
             }}>
               <Award size={26} />
@@ -67,7 +67,7 @@ const Certifications = () => {
                   background: 'var(--accent-dim)',
                   border: '1px solid var(--accent-border)',
                   borderRadius: '20px',
-                  color: 'var(--accent)',
+                  color: 'var(--text-primary)',
                   fontSize: '0.78rem',
                   fontWeight: '600',
                 }}>
@@ -75,7 +75,7 @@ const Certifications = () => {
                 </span>
                 {cert.link && (
                   <a href={cert.link} target="_blank" rel="noopener noreferrer"
-                    style={{ color: 'var(--accent)', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}>
+                    style={{ color: 'var(--text-primary)', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}>
                     <ExternalLink size={12} /> View Certificate
                   </a>
                 )}

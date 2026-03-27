@@ -20,7 +20,7 @@ const Footer = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         style={{
-          maxWidth: '1400px',
+          maxWidth: '1200px',
           margin: '0 auto',
           display: 'flex',
           flexDirection: 'column',
@@ -34,7 +34,7 @@ const Footer = () => {
           <p style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
             Aboobacker Salah C
           </p>
-          <p style={{ fontSize: '0.85rem', color: 'var(--accent)', fontWeight: '500', marginTop: '4px' }}>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: '500', marginTop: '4px' }}>
             Full-Stack Developer · Dubai, UAE
           </p>
         </div>
@@ -63,8 +63,8 @@ const Footer = () => {
                 transition: 'all 0.2s',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--accent)';
-                e.currentTarget.style.color = 'var(--accent)';
+                e.currentTarget.style.borderColor = 'var(--text-primary)';
+                e.currentTarget.style.color = 'var(--text-primary)';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = 'var(--border)';
@@ -78,8 +78,8 @@ const Footer = () => {
 
         {/* Copyright */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '5px', justifyContent: 'center' }}>
-            Made with <Heart size={13} color="#00e87a" fill="#00e87a" /> using React & Framer Motion
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+            Made with <Heart size={13} color="var(--text-primary)" fill="var(--text-primary)" /> using React & Framer Motion
           </p>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
             © 2025 Aboobacker Salah C. All rights reserved.

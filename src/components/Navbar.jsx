@@ -1,19 +1,74 @@
+// Navbar.jsx
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import MoonToggle from './MoonToggle'; // Updated import
+
+const RollLink = ({ item, onClick }) => {
+  return (
+    <motion.button
+      onClick={onClick}
+      style={{
+        color: 'var(--text-secondary)',
+        fontSize: '0.85rem',
+        fontWeight: '500',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'inline-block',
+      }}
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+      whileTap={{ scale: 0.95 }}
+    >
+      <motion.div
+        variants={{
+          rest: { y: 0 },
+          hover: { y: '-100%' }
+        }}
+        transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
+      >
+        {item}
+      </motion.div>
+      <motion.div
+        variants={{
+          rest: { y: '100%' },
+          hover: { y: 0 }
+        }}
+        transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          color: 'var(--text-primary)',
+          textAlign: 'center'
+        }}
+      >
+        {item}
+      </motion.div>
+    </motion.button>
+  );
+};
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      if (isOpen) setIsOpen(false);
+    };
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 900);
-      if (window.innerWidth > 900) setIsOpen(false);
+      if (window.innerWidth > 768 && isOpen) {
+        setIsOpen(false);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
@@ -21,7 +76,7 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isOpen]);
 
   const navItems = ['Home', 'About', 'Experience', 'Projects', 'Education', 'Skills', 'Contact'];
 
@@ -33,167 +88,90 @@ const Navbar = () => {
 
   const navStyle = {
     position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
+    top: '20px',
+    left: 'clamp(20px, 4%, 40px)',
+    transformOrigin: 'left top',
     zIndex: 1000,
-    background: scrolled ? 'var(--nav-bg)' : 'transparent',
-    backdropFilter: scrolled ? 'blur(12px)' : 'none',
+    width: 'fit-content',
+    background: theme === 'dark'
+      ? 'rgba(20,20,20,0.6)'
+      : 'rgba(255,255,255,0.6)',
+    backdropFilter: 'blur(16px)',
+    border: '1px solid rgba(255,255,255,0.1)',
+    borderRadius: '18px',
+    boxShadow: '0 8px 30px rgba(0,0,0,0.2)',
+    padding: scrolled ? '6px 12px' : '10px 18px',
     transition: 'all 0.3s ease',
-    borderBottom: scrolled ? '1px solid var(--border)' : 'none',
-  };
-
-  const linkBase = {
-    color: 'var(--text-secondary)',
-    textDecoration: 'none',
-    fontSize: '0.9rem',
-    fontWeight: '500',
-    transition: 'color 0.2s',
-    letterSpacing: '0.02em',
-    cursor: 'pointer',
-    background: 'none',
-    border: 'none',
-    fontFamily: 'inherit',
-    padding: 0,
   };
 
   return (
-    <motion.nav initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.5 }} style={navStyle}>
-      <div style={{
-        maxWidth: '1400px',
-        margin: '0 auto',
-        padding: '18px 40px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}>
-        {/* Logo */}
-        <button onClick={() => scrollTo('home')} style={{
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 0,
-          padding: 0,
-        }}>
-          <span style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-            Aboobacker
-          </span>
-          <span style={{ fontSize: '0.8rem', color: 'var(--accent)', fontWeight: '600', letterSpacing: '0.1em' }}>
-            SALAH C
-          </span>
+    <motion.nav 
+      initial={{ y: -80, x: 0 }} 
+      animate={{ y: 0, x: 0, scale: scrolled ? 0.95 : 1 }} 
+      transition={{ duration: 0.3 }}
+      style={navStyle}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+        <button 
+          onClick={() => scrollTo('home')} 
+          style={{ 
+            fontWeight: '800', 
+            fontSize: '1.1rem',
+            background: 'none', 
+            border: 'none', 
+            color: 'var(--text-primary)', 
+            cursor: 'pointer',
+            marginRight: '16px',
+            letterSpacing: '-0.02em',
+          }}
+        >
+          Salah
         </button>
 
-        {/* Desktop nav */}
-        {!isMobile && (
-          <div style={{ display: 'flex', gap: '36px', alignItems: 'center' }}>
-            {navItems.map(item => (
-              <button
-                key={item}
-                onClick={() => scrollTo(item)}
-                style={linkBase}
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-              >
-                {item}
-              </button>
-            ))}
+        <div className="nav-desktop">
+          {navItems.map(item => (
+            <RollLink key={item} item={item} onClick={() => scrollTo(item)} />
+          ))}
+          {/* Moon/Sun Toggle */}
+          <MoonToggle theme={theme} toggleTheme={toggleTheme} />
+        </div>
 
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              style={{
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border)',
-                borderRadius: '10px',
-                padding: '8px 12px',
-                cursor: 'pointer',
-                color: 'var(--text-primary)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                fontSize: '0.85rem',
-                fontWeight: '500',
-                transition: 'all 0.2s',
-                fontFamily: 'inherit',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--accent)';
-                e.currentTarget.style.color = 'var(--accent)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'var(--border)';
-                e.currentTarget.style.color = 'var(--text-primary)';
-              }}
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-              {theme === 'dark' ? 'Light' : 'Dark'}
-            </button>
-          </div>
-        )}
-
-        {/* Mobile right controls */}
-        {isMobile && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <button
-              onClick={toggleTheme}
-              style={{
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border)',
-                borderRadius: '8px',
-                padding: '8px',
-                cursor: 'pointer',
-                color: 'var(--text-primary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              style={{ background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', padding: '4px', display: 'flex' }}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
-          </div>
-        )}
+        <div className="nav-mobile">
+          <MoonToggle theme={theme} toggleTheme={toggleTheme} />
+          <button onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'pointer' }}>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            style={{ overflow: 'hidden', background: 'var(--nav-bg)', backdropFilter: 'blur(12px)', borderTop: '1px solid var(--border)' }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 10 }}
+            exit={{ opacity: 0, y: -10 }}
+            style={{
+              position: 'absolute',
+              top: '60px',
+              left: '0',
+              transform: 'none',
+              width: '200px',
+              background: 'var(--nav-bg)',
+              borderRadius: '12px',
+              padding: '10px',
+            }}
           >
-            <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              {navItems.map(item => (
-                <button
-                  key={item}
-                  onClick={() => scrollTo(item)}
-                  style={{
-                    ...linkBase,
-                    fontSize: '1rem',
-                    padding: '12px 8px',
-                    borderBottom: '1px solid var(--border)',
-                    textAlign: 'left',
-                    color: 'var(--text-primary)',
-                  }}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
+            {navItems.map(item => (
+              <motion.button
+                key={item}
+                onClick={() => scrollTo(item)}
+                style={{ display: 'block', width: '100%', padding: '10px', background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'pointer' }}
+                whileHover={{ scale: 1.05, x: 5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {item}
+              </motion.button>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>

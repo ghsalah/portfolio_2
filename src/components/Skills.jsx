@@ -62,7 +62,7 @@ const Skills = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--accent)',
+              color: 'var(--text-primary)',
               marginBottom: '18px',
             }}>
               {cat.icon}

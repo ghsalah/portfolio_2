@@ -47,13 +47,13 @@ const Languages = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--accent)',
+                color: 'var(--text-primary)',
               }}>
                 <MessageSquare size={18} />
               </div>
               <div>
                 <h3 style={{ fontSize: '1rem', fontWeight: '700', color: 'var(--text-primary)', lineHeight: 1.2 }}>{lang.name}</h3>
-                <p style={{ fontSize: '0.8rem', color: 'var(--accent)', fontWeight: '600' }}>{lang.proficiency}</p>
+                <p style={{ fontSize: '0.8rem', color: 'var(--text-primary)', fontWeight: '600' }}>{lang.proficiency}</p>
               </div>
             </div>
 
@@ -64,7 +64,7 @@ const Languages = () => {
                 whileInView={{ width: lang.level + '%' }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: i * 0.1 + 0.3, ease: 'easeOut' }}
-                style={{ height: '100%', background: 'linear-gradient(90deg, #00e87a, #00c4ff)', borderRadius: '2px' }}
+                style={{ height: '100%', background: 'var(--text-primary)', borderRadius: '2px' }}
               />
             </div>
           </motion.div>

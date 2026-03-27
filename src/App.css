@@ -2,122 +2,143 @@
 .App {
   min-height: 100vh;
   background: var(--bg-primary);
-  transition: background 0.3s ease;
+  transition: background 0.4s ease;
+}
+
+.page-content {
+  animation: pageLoad 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ─── Sections ────────────────────────────────────────────── */
 section {
-  padding: 100px 40px;
+  padding: 100px 24px;
   max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+  overflow-x: clip;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Let the first screen use viewport-friendly spacing. */
+#home {
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ─── Section Titles ──────────────────────────────────────── */
 .section-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 60px;
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-weight: 400;
+  margin-bottom: 40px;
   position: relative;
   display: inline-block;
+  text-align: left;
   color: var(--text-primary);
   letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .section-title span.highlight {
-  background: linear-gradient(135deg, #00e87a, #00c4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: 600;
 }
 
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #00e87a, #00c4ff);
-  border-radius: 2px;
+@media (max-width: 768px) {
+  .section-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+  }
 }
 
 /* ─── Cards ───────────────────────────────────────────────── */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  border-radius: 20px;
+  padding: 32px;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {
   background: var(--bg-card-hover);
-  border-color: var(--accent-border);
-  box-shadow: 0 8px 40px rgba(0, 232, 122, 0.1);
-  transform: translateY(-4px);
+  border-color: var(--text-muted);
+  transform: translateY(-2px);
 }
 
 /* ─── Buttons ─────────────────────────────────────────────── */
 .btn-primary {
-  padding: 14px 36px;
-  background: var(--accent);
-  color: #000;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-}
-
-.btn-primary:hover {
-  background: #00ffaa;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 232, 122, 0.35);
-}
-
-.btn-outline {
-  padding: 14px 36px;
-  background: transparent;
-  color: var(--text-primary);
-  border: 2px solid var(--border);
-  border-radius: 10px;
+  padding: 14px 32px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: 2px solid var(--text-primary);
+  border-radius: 40px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.btn-outline {
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border);
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-family: inherit;
 }
 
 .btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
+  background: var(--bg-card-hover);
+  border-color: var(--text-primary);
+  transform: scale(1.02);
 }
 
 /* ─── Skill Pill ──────────────────────────────────────────── */
 .skill-pill {
-  padding: 6px 14px;
-  background: var(--accent-dim);
-  border: 1px solid var(--accent-border);
-  color: var(--accent);
-  border-radius: 20px;
-  font-size: 0.85rem;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 30px;
+  font-size: 0.9rem;
   font-weight: 500;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.skill-pill:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
 }
 
 /* ─── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   section {
-    padding: 70px 20px;
+    padding: 80px 20px;
   }
 }
 
@@ -130,12 +151,12 @@ section {
 /* ─── Scroll To Top ───────────────────────────────────────── */
 .scroll-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 46px;
-  height: 46px;
-  background: var(--accent);
-  color: #000;
+  bottom: 40px;
+  right: 40px;
+  width: 56px;
+  height: 56px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -144,10 +165,54 @@ section {
   justify-content: center;
   z-index: 999;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 232, 122, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .scroll-top:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0, 232, 122, 0.5);
+  transform: translateY(-6px);
+}
+
+/* ─── Navbar Responsive ───────────────────────── */
+.nav-desktop {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.nav-mobile {
+  display: none;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: flex;
+  }
+}
+
+/* ─── Projects Grid (CSS-controlled; stable under zoom) ─────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
 }

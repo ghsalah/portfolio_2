@@ -104,7 +104,7 @@ const About = () => {
             marginBottom: '28px',
             textAlign: 'center', // Center on mobile
           }}>
-            I'm a <strong style={{ color: 'var(--accent)' }}>Full-Stack Developer</strong> with expertise in the
+            I'm a <strong style={{ color: 'var(--text-primary)' }}>Full-Stack Developer</strong> with expertise in the
             MERN stack, currently working at <strong style={{ color: 'var(--text-primary)' }}>BAIRUHATECH LLP</strong> in
             Dubai, UAE. I'm passionate about building scalable web applications and turning complex problems into elegant solutions.
           </p>
@@ -133,7 +133,7 @@ const About = () => {
                 }}
               >
                 <span style={{ 
-                  color: 'var(--accent)', 
+                  color: 'var(--text-primary)', 
                   flexShrink: 0,
                   display: 'flex',
                   alignItems: 'center',
@@ -172,7 +172,7 @@ const About = () => {
                 <div style={{ 
                   fontSize: 'clamp(1.5rem, 6vw, 2rem)', 
                   fontWeight: '800', 
-                  color: 'var(--accent)', 
+                  color: 'var(--text-primary)', 
                   lineHeight: 1 
                 }}>
                   {value}
@@ -193,7 +193,7 @@ const About = () => {
 
       {/* Desktop Styles */}
       <style>{`
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
           #about {
             padding: 100px 40px !important;
           }

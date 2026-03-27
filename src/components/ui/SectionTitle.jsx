@@ -12,7 +12,7 @@ const SectionTitle = ({ title, highlight, subtitle, className = '' }) => {
           <React.Fragment key={index}>
             {part}
             {index < title.split(highlight).length - 1 && (
-              <span style={{ color: '#00ff88' }}>{highlight}</span>
+              <span style={{ color: 'var(--text-primary)' }}>{highlight}</span>
             )}
           </React.Fragment>
         ))}
@@ -20,7 +20,7 @@ const SectionTitle = ({ title, highlight, subtitle, className = '' }) => {
       {subtitle && (
         <p style={{
           fontSize: '1.2rem',
-          color: '#b0b0b0',
+          color: 'var(--text-muted)',
           marginTop: '10px',
         }}>
           {subtitle}

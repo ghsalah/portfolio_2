@@ -97,7 +97,7 @@ const Contact = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--accent)',
+                  color: 'var(--text-primary)',
                   flexShrink: 0,
                 }}>
                   {item.icon}
@@ -108,7 +108,7 @@ const Contact = () => {
                   </p>
                   {item.link ? (
                     <a href={item.link} style={{ fontSize: '0.95rem', color: 'var(--text-primary)', textDecoration: 'none', fontWeight: '500' }}
-                      onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                      onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                       onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
                     >
                       {item.value}
@@ -159,7 +159,7 @@ const Contact = () => {
               background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
             }}>
               <p style={{ color: '#fff', fontWeight: '700', fontSize: '1.1rem' }}>Aboobacker Salah C</p>
-              <p style={{ color: 'var(--accent)', fontSize: '0.85rem', marginTop: '4px' }}>Full-Stack Developer · Dubai, UAE</p>
+              <p style={{ color: 'var(--text-primary)', fontSize: '0.85rem', marginTop: '4px' }}>Full-Stack Developer · Dubai, UAE</p>
             </div>
           </div>
         </motion.div>

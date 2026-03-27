@@ -11,7 +11,7 @@ const TechBadge = ({ tech, variant = 'small' }) => {
       ...sizes[variant],
       background: 'var(--accent-dim)',
       border: '1px solid var(--accent-border)',
-      color: 'var(--accent)',
+      color: 'var(--text-primary)',
       fontWeight: '500',
       borderRadius: '20px',
       display: 'inline-block',
