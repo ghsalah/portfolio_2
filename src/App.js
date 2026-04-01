@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
