@@ -1,169 +1,225 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
-import profileImg from '../assets/banner/aboobacker_salah_1.jpg';
+import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 
 const Contact = () => {
   const contactInfo = [
-  { 
-    icon: <Phone size={20} />, 
-    label: 'Phone (India)', 
-    value: '+91 8590660040', 
-    link: 'tel:+918590660040' 
-  },
-  { 
-    icon: <Mail size={20} />, 
-    label: 'Email', 
-    value: 'aboobackersalah33@gmail.com', 
-    link: 'mailto:aboobackersalah33@gmail.com' 
-  },
-  { 
-    icon: <MapPin size={20} />, 
-    label: 'Location (India)', 
-    value: 'Kerala, India', 
-    link: null 
-  },
-  { 
-    icon: <ExternalLink size={20} />, 
-    label: 'LinkedIn', 
-    value: 'Aboobacker salah', 
-    link: 'https://www.linkedin.com/in/aboobacker-salah-b51b08383/' 
-  },
-];
+    {
+      icon: <Mail size={24} />,
+      label: 'Email',
+      value: 'aboobackersalah34@gmail.com',
+      href: 'mailto:aboobackersalah34@gmail.com'
+    },
+    {
+      icon: <Phone size={24} />,
+      label: 'Phone',
+      value: '+91 8590660040',
+      href: 'tel:+918590660040'
+    },
+    {
+      icon: <MapPin size={24} />,
+      label: 'Location',
+      value: 'Kozhikode, Kerala, India',
+      href: 'https://maps.google.com/?q=Kozhikode,Kerala,India'
+    }
+  ];
 
   return (
-    <section id="contact" style={{ background: 'var(--bg-secondary)' }}>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="section-title">
-          Get In <span className="highlight">Touch</span>
-        </h2>
-      </motion.div>
+    <section id="contact" className="contact-section section-padding">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">Connect</span>
+          <h2 className="section-title">START A <br /> CONVERSATION</h2>
+        </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '60px',
-        alignItems: 'center',
-      }}>
-        {/* Left – contact info */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p style={{ fontSize: '1rem', lineHeight: '1.8', color: 'var(--text-secondary)', marginBottom: '36px', maxWidth: '480px' }}>
-            I'm always open to discussing new projects, creative ideas, or opportunities.
-            Feel free to reach out through any channel below — I'd love to hear from you!
-          </p>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {contactInfo.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  padding: '16px 20px',
-                  background: 'var(--bg-card)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '14px',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'var(--accent-border)';
-                  e.currentTarget.style.background = 'var(--bg-card-hover)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'var(--border)';
-                  e.currentTarget.style.background = 'var(--bg-card)';
-                }}
+        <div className="contact-grid">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="contact-info"
+          >
+            {contactInfo.map((info, i) => (
+              <a 
+                key={i} 
+                href={info.href} 
+                className="contact-card"
+                target={info.label === 'Location' ? '_blank' : '_self'}
+                rel={info.label === 'Location' ? 'noreferrer' : ''}
               >
-                <div style={{
-                  width: '42px',
-                  height: '42px',
-                  borderRadius: '10px',
-                  background: 'var(--accent-dim)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--text-primary)',
-                  flexShrink: 0,
-                }}>
-                  {item.icon}
+                <div className="contact-icon">{info.icon}</div>
+                <div className="contact-details">
+                  <span className="contact-label">{info.label}</span>
+                  <p className="contact-value">{info.value}</p>
                 </div>
-                <div>
-                  <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '2px', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    {item.label}
-                  </p>
-                  {item.link ? (
-                    <a href={item.link} style={{ fontSize: '0.95rem', color: 'var(--text-primary)', textDecoration: 'none', fontWeight: '500' }}
-                      onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                      onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <span style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: '500' }}>{item.value}</span>
-                  )}
-                </div>
-              </motion.div>
+                <ArrowUpRight className="contact-arrow" size={20} />
+              </a>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Right – profile photo */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
-          <div style={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: '380px',
-            borderRadius: '24px',
-            overflow: 'hidden',
-            border: '1px solid var(--border)',
-          }}>
-           <img
-  src={profileImg}
-  alt="Aboobacker Salah - Contact"
-  style={{
-    width: '100%',
-    display: 'block',
-    objectFit: 'cover',
-    aspectRatio: '4/5',
-    objectPosition: 'top center',
-    filter: 'grayscale(100%)'
-  }}
-/>
-            <div style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              padding: '24px',
-              background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
-            }}>
-              <p style={{ color: '#fff', fontWeight: '700', fontSize: '1.1rem' }}>Aboobacker Salah C</p>
-              <p style={{ color: 'var(--text-primary)', fontSize: '0.85rem', marginTop: '4px' }}>Full-Stack Developer · Dubai, UAE</p>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="contact-availability"
+          >
+            <p className="availability-text">
+              I am currently open to new opportunities and the prospect of relocating.
+              Whether it's for a MERN stack project or a collaborative engineering effort,
+              I look forward to hearing from you.
+            </p>
+            <div className="contact-socials">
+              <span className="social-label">Follow Me</span>
+              <div className="social-group">
+                <a href="https://github.com/ghsalah" target="_blank" rel="noreferrer" className="social-link">Github</a>
+                <a href="https://linkedin.com/in/salah" target="_blank" rel="noreferrer" className="social-link">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
+
+      <style>{`
+        .contact-section {
+          background: var(--bg-primary);
+          border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10rem;
+          margin-top: 6rem;
+          align-items: center;
+        }
+
+        .contact-info {
+           display: flex;
+           flex-direction: column;
+           gap: 2rem;
+        }
+
+        .contact-card {
+          display: flex;
+          align-items: center;
+          gap: 2.5rem;
+          padding: 3rem;
+          border: 1px solid var(--border);
+          text-decoration: none;
+          color: var(--text-primary);
+          position: relative;
+          transition: var(--transition-base);
+          background: var(--bg-secondary);
+        }
+
+        .contact-card:hover {
+          background: var(--bg-primary);
+          border-color: var(--text-primary);
+          padding-left: 4rem;
+        }
+
+        .contact-icon {
+          color: var(--text-muted);
+          transition: var(--transition-base);
+        }
+
+        .contact-card:hover .contact-icon {
+          color: var(--text-primary);
+        }
+
+        .contact-label {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--text-muted);
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+        }
+
+        .contact-value {
+          font-size: var(--fs-lg);
+          margin: 0;
+          letter-spacing: -0.02em;
+          font-weight: 700;
+        }
+
+        .contact-arrow {
+          position: absolute;
+          right: 3rem;
+          top: 3rem;
+          opacity: 0;
+          transition: var(--transition-base);
+        }
+
+        .contact-card:hover .contact-arrow {
+          opacity: 1;
+          transform: translate(5px, -5px);
+        }
+
+        .availability-text {
+          font-size: var(--fs-xl);
+          line-height: 1.4;
+          color: var(--text-secondary);
+          margin-bottom: 4rem;
+          font-weight: 500;
+        }
+
+        .contact-socials {
+           display: flex;
+           flex-direction: column;
+           gap: 1.5rem;
+        }
+
+        .social-label {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.25em;
+          color: var(--text-muted);
+          font-weight: 800;
+        }
+
+        .social-group {
+          display: flex;
+          gap: 3rem;
+        }
+
+        .social-link {
+          font-size: var(--fs-base);
+          color: var(--text-primary);
+          text-decoration: none;
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid var(--border);
+          transition: var(--transition-base);
+          font-weight: 700;
+        }
+
+        .social-link:hover {
+          border-bottom-color: var(--text-primary);
+          padding-right: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+          .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 6rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .contact-card {
+            padding: 2rem;
+          }
+          .contact-value {
+            font-size: var(--fs-base);
+          }
+          .availability-text {
+            font-size: var(--fs-lg);
+          }
+        }
+      `}</style>
     </section>
   );
 };

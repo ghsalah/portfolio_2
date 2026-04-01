@@ -1,89 +1,103 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, ExternalLink } from 'lucide-react';
 
 const Certifications = () => {
   const certifications = [
     {
       title: 'Introduction to Internet of Things',
-      issuer: 'NPTEL / Certification Authority',
+      issuer: 'Cisco Networking Academy', // Assumed standard issuer for this course
       year: '2024',
-      link: null,
-    },
+      description: 'Foundational understanding of IoT architecture, security, and networked systems.'
+    }
   ];
 
   return (
-    <section id="certifications" style={{ background: 'var(--bg-secondary)' }}>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="section-title">
-          <span className="highlight">Certifications</span>
-        </h2>
-      </motion.div>
+    <section id="certifications" className="certifications-section section-padding">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">Accreditation</span>
+          <h2 className="section-title">CERTIFICATES & <br /> RECOGNITION</h2>
+        </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '24px',
-      }}>
-        {certifications.map((cert, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="card"
-            style={{ padding: '28px', display: 'flex', alignItems: 'flex-start', gap: '20px' }}
-          >
-            <div style={{
-              width: '52px',
-              height: '52px',
-              borderRadius: '14px',
-              background: 'var(--accent-dim)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--text-primary)',
-              flexShrink: 0,
-            }}>
-              <Award size={26} />
-            </div>
-
-            <div style={{ flex: 1 }}>
-              <h3 style={{ fontSize: '1rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '6px', lineHeight: '1.4' }}>
-                {cert.title}
-              </h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>
-                {cert.issuer}
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
-                <span style={{
-                  padding: '3px 10px',
-                  background: 'var(--accent-dim)',
-                  border: '1px solid var(--accent-border)',
-                  borderRadius: '20px',
-                  color: 'var(--text-primary)',
-                  fontSize: '0.78rem',
-                  fontWeight: '600',
-                }}>
-                  {cert.year}
-                </span>
-                {cert.link && (
-                  <a href={cert.link} target="_blank" rel="noopener noreferrer"
-                    style={{ color: 'var(--text-primary)', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}>
-                    <ExternalLink size={12} /> View Certificate
-                  </a>
-                )}
+        <div className="cert-list">
+          {certifications.map((cert, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: i * 0.2 }}
+              className="cert-item"
+            >
+              <div className="cert-main">
+                <h3 className="cert-title">{cert.title}</h3>
+                <span className="cert-issuer">{cert.issuer} • {cert.year}</span>
               </div>
-            </div>
-          </motion.div>
-        ))}
+              <p className="cert-desc">{cert.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        .certifications-section {
+          background: var(--bg-primary);
+          border-top: 1px solid var(--border);
+        }
+
+        .cert-list {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 4rem;
+          margin-top: 4rem;
+        }
+
+        .cert-item {
+          padding: 3rem;
+          border: 1px solid var(--border);
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          transition: var(--transition-base);
+        }
+
+        .cert-item:hover {
+          border-color: var(--text-primary);
+          background: var(--bg-secondary);
+        }
+
+        .cert-title {
+          font-size: var(--fs-lg);
+          color: var(--text-primary);
+          margin: 0;
+          letter-spacing: -0.04em;
+          font-weight: 800;
+        }
+
+        .cert-issuer {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--text-muted);
+          font-weight: 700;
+          margin-top: 0.5rem;
+          display: block;
+        }
+
+        .cert-desc {
+          font-size: var(--fs-sm);
+          color: var(--text-secondary);
+          line-height: 1.6;
+          margin: 0;
+          opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+           .cert-list {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
     </section>
   );
 };

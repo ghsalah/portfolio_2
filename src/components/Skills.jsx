@@ -1,85 +1,134 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Wrench, Globe } from 'lucide-react';
 
 const Skills = () => {
-  const categories = [
+  const skillCategories = [
     {
-      title: 'Programming Languages',
-      icon: <Code size={24} />,
-      skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'Java', 'C'],
+      title: 'Frontend Architecture',
+      skills: ['React', 'Next.js', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'TailwindCSS']
     },
     {
-      title: 'Frontend',
-      icon: <Globe size={24} />,
-      skills: ['React', 'Next.js', 'Redux Toolkit', 'HTML5', 'CSS3', 'Tailwind CSS'],
+      title: 'Backend Ecosystem',
+      skills: ['Node.js', 'Express.js', 'NestJS', 'PHP', 'Django', 'RESTful APIs']
     },
     {
-      title: 'Backend & Database',
-      icon: <Database size={24} />,
-      skills: ['Node.js', 'Express.js', 'NestJS', 'MongoDB', 'MySQL', 'PostgreSQL'],
+      title: 'Databases & Infrastructure',
+      skills: ['MongoDB', 'MySQL', 'Git', 'GitHub', 'Postman', 'VS Code']
     },
     {
-      title: 'Tools & Practices',
-      icon: <Wrench size={24} />,
-      skills: ['Git', 'REST APIs', 'Agile', 'Problem Solving', 'React Query', 'Sequelize'],
-    },
+      title: 'Soft Skills & Systems',
+      skills: ['Problem Solving', 'Strategic Planning', 'Creative Thinking', 'Adaptability to Change']
+    }
   ];
 
   return (
-    <section id="skills" style={{ background: 'var(--bg-primary)' }}>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="section-title">
-          Technical <span className="highlight">Skills</span>
-        </h2>
-      </motion.div>
+    <section id="skills" className="skills-section section-padding">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">Engineering Stack</span>
+          <h2 className="section-title">CORE <br /> COMPETENCIES</h2>
+        </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-        gap: '24px',
-      }}>
-        {categories.map((cat, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="card"
-            style={{ padding: '28px' }}
-          >
-            <div style={{
-              width: '46px',
-              height: '46px',
-              borderRadius: '12px',
-              background: 'var(--accent-dim)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--text-primary)',
-              marginBottom: '18px',
-            }}>
-              {cat.icon}
-            </div>
-
-            <h3 style={{ fontSize: '1rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '16px', letterSpacing: '-0.01em' }}>
-              {cat.title}
-            </h3>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {cat.skills.map((skill, j) => (
-                <span key={j} className="skill-pill">{skill}</span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+        <div className="skills-grid">
+          {skillCategories.map((category, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="skill-category"
+            >
+              <h3 className="skill-cat-title">{category.title}</h3>
+              <div className="skills-list">
+                {category.skills.map((skill, j) => (
+                  <div key={j} className="skill-item">
+                    <span className="skill-bullet">•</span>
+                    <span className="skill-name">{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        .skills-section {
+          background: var(--bg-primary);
+          border-top: 1px solid var(--border);
+        }
+
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 6rem;
+          margin-top: 6rem;
+        }
+
+        .skill-category {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .skill-cat-title {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--text-muted);
+          font-weight: 700;
+          margin-bottom: 1rem;
+        }
+
+        .skills-list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem 4rem;
+        }
+
+        .skill-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid var(--border);
+          transition: var(--transition-base);
+        }
+
+        .skill-item:hover {
+          padding-left: 1rem;
+          border-bottom-color: var(--text-primary);
+        }
+
+        .skill-bullet {
+          color: var(--text-muted);
+          font-size: 1.2rem;
+        }
+
+        .skill-name {
+          font-size: var(--fs-base);
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+
+        @media (max-width: 1024px) {
+          .skills-grid {
+            gap: 4rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .skills-grid {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+          }
+
+          .skills-list {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
     </section>
   );
 };

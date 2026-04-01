@@ -1,91 +1,158 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
 const Footer = () => {
-  const socials = [
-    { icon: <Github size={18} />, href: 'https://github.com', label: 'GitHub' },
-    { icon: <Linkedin size={18} />, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <Mail size={18} />, href: 'mailto:aboobackersalah33@gmail.com', label: 'Email' },
-  ];
-
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <footer style={{
-      background: 'var(--bg-secondary)',
-      borderTop: '1px solid var(--border)',
-      padding: '48px 40px 32px',
-    }}>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '24px',
-          textAlign: 'center',
-        }}
-      >
-        {/* Brand */}
-        <div>
-          <p style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-            Aboobacker Salah C
-          </p>
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: '500', marginTop: '4px' }}>
-            Full-Stack Developer · Dubai, UAE
-          </p>
+    <footer className="main-footer">
+      <div className="container">
+        <div className="footer-grid">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="footer-left"
+          >
+            <h2 className="footer-logo">SALAH<span>.</span></h2>
+            <p className="footer-tagline">Engineering digital systems with intent and precision from Kerala to the globe.</p>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="footer-right"
+          >
+            <div className="footer-links">
+              <div className="footer-col">
+                <span className="footer-label">Connect</span>
+                <a href="https://github.com/ghsalah" target="_blank" rel="noreferrer" className="footer-link">GitHub</a>
+                <a href="https://linkedin.com/in/salah" target="_blank" rel="noreferrer" className="footer-link">LinkedIn</a>
+              </div>
+              <div className="footer-col">
+                <span className="footer-label">Direct</span>
+                <a href="mailto:contact@salah.com" className="footer-link">Email</a>
+                <a href="tel:+9710000000" className="footer-link">Call</a>
+              </div>
+            </div>
+          </motion.div>
         </div>
+        
+        <div className="footer-bottom">
+          <p>© {currentYear} SALAH. ALL RIGHTS RESERVED.</p>
+          <p>BUILT WITH PRECISION & INTENT.</p>
+        </div>
+      </div>
 
-        {/* Social links */}
-        <div style={{ display: 'flex', gap: '12px' }}>
-          {socials.map(({ icon, href, label }) => (
-            <motion.a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ y: -3 }}
-              aria-label={label}
-              style={{
-                width: '40px',
-                height: '40px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border)',
-                borderRadius: '10px',
-                color: 'var(--text-secondary)',
-                textDecoration: 'none',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--text-primary)';
-                e.currentTarget.style.color = 'var(--text-primary)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'var(--border)';
-                e.currentTarget.style.color = 'var(--text-secondary)';
-              }}
-            >
-              {icon}
-            </motion.a>
-          ))}
-        </div>
+      <style>{`
+        .main-footer {
+          padding: 12rem 0 6rem;
+          border-top: 1px solid var(--border);
+          background: var(--bg-primary);
+          transition: var(--transition-base);
+        }
 
-        {/* Copyright */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
-            Made with <Heart size={13} color="var(--text-primary)" fill="var(--text-primary)" /> using React & Framer Motion
-          </p>
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            © 2025 Aboobacker Salah C. All rights reserved.
-          </p>
-        </div>
-      </motion.div>
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          gap: 6rem;
+          margin-bottom: 10rem;
+        }
+
+        .footer-logo {
+          font-size: var(--fs-Huge);
+          line-height: 0.8;
+          margin-bottom: 3rem;
+          letter-spacing: -0.06em;
+          color: var(--text-primary);
+          font-weight: 800;
+        }
+
+        .footer-logo span {
+           color: var(--text-muted);
+        }
+
+        .footer-tagline {
+          font-size: var(--fs-lg);
+          color: var(--text-secondary);
+          max-width: 450px;
+          line-height: 1.5;
+          margin: 0;
+          font-weight: 500;
+        }
+
+        .footer-links {
+          display: flex;
+          gap: 6rem;
+          justify-content: flex-end;
+        }
+
+        .footer-col {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .footer-label {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.25em;
+          color: var(--text-muted);
+          margin-bottom: 1rem;
+          font-weight: 800;
+        }
+
+        .footer-link {
+          font-size: var(--fs-base);
+          color: var(--text-primary);
+          text-decoration: none;
+          transition: var(--transition-base);
+          font-weight: 700;
+          opacity: 0.6;
+        }
+
+        .footer-link:hover {
+          opacity: 1;
+          color: var(--text-primary);
+          padding-left: 1rem;
+        }
+
+        .footer-bottom {
+          display: flex;
+          justify-content: space-between;
+          padding-top: 5rem;
+          border-top: 1.5px solid var(--border);
+          font-size: var(--fs-xs);
+          color: var(--text-muted);
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          font-weight: 700;
+        }
+
+        @media (max-width: 1024px) {
+          .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 6rem;
+          }
+          .footer-links {
+            justify-content: flex-start;
+          }
+          .footer-bottom {
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .footer-logo {
+            font-size: var(--fs-3xl);
+          }
+        }
+      `}</style>
     </footer>
   );
 };

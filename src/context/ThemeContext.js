@@ -6,19 +6,11 @@ export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
         const stored = localStorage.getItem('portfolio-theme');
         if (stored) return stored;
-
-        // Default to system preference so the first-load matches "clean light" layouts by default.
-        const prefersDark =
-          typeof window !== 'undefined' &&
-          window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        return prefersDark ? 'dark' : 'light';
+        return 'light'; // Default to light mode (black text on white)
     });
 
     useEffect(() => {
-        document.body.classList.remove('dark', 'light');
-        document.body.classList.add(theme);
+        document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('portfolio-theme', theme);
     }, [theme]);
 

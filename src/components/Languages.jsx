@@ -1,75 +1,112 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare } from 'lucide-react';
 
 const Languages = () => {
   const languages = [
-    { name: 'English', proficiency: 'Fluent', level: 90 },
-    { name: 'Malayalam', proficiency: 'Native', level: 100 },
-    { name: 'Hindi', proficiency: 'Fluent', level: 80 },
+    { name: 'English', level: 'Professional Proficiency', percentage: 90 },
+    { name: 'Malayalam', level: 'Native Speaker', percentage: 100 },
+    { name: 'Hindi', level: 'Working Proficiency', percentage: 80 },
   ];
 
   return (
-    <section id="languages" style={{ background: 'var(--bg-primary)' }}>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="section-title">
-          <span className="highlight">Languages</span>
-        </h2>
-      </motion.div>
+    <section id="languages" className="languages-section section-padding">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">Communication</span>
+          <h2 className="section-title">GLOBAL <br /> DIALOGUE</h2>
+        </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-        gap: '20px',
-        maxWidth: '800px',
-      }}>
-        {languages.map((lang, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="card"
-            style={{ padding: '24px' }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '10px',
-                background: 'var(--accent-dim)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--text-primary)',
-              }}>
-                <MessageSquare size={18} />
+        <div className="languages-grid">
+          {languages.map((lang, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="lang-card"
+            >
+              <div className="lang-info">
+                <span className="lang-name">{lang.name}</span>
+                <span className="lang-level">{lang.level}</span>
               </div>
-              <div>
-                <h3 style={{ fontSize: '1rem', fontWeight: '700', color: 'var(--text-primary)', lineHeight: 1.2 }}>{lang.name}</h3>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-primary)', fontWeight: '600' }}>{lang.proficiency}</p>
+              <div className="lang-bar-container">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${lang.percentage}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="lang-bar"
+                />
               </div>
-            </div>
-
-            {/* Progress bar */}
-            <div style={{ height: '4px', background: 'var(--border)', borderRadius: '2px', overflow: 'hidden' }}>
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: lang.level + '%' }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.1 + 0.3, ease: 'easeOut' }}
-                style={{ height: '100%', background: 'var(--text-primary)', borderRadius: '2px' }}
-              />
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        .languages-section {
+          background: var(--bg-primary);
+          border-top: 1px solid var(--border);
+        }
+
+        .languages-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 6rem;
+          margin-top: 6rem;
+        }
+
+        .lang-card {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .lang-info {
+           display: flex;
+           flex-direction: column;
+           gap: 0.5rem;
+        }
+
+        .lang-name {
+          font-size: var(--fs-xl);
+          font-weight: 800;
+          color: var(--text-primary);
+          letter-spacing: -0.04em;
+        }
+
+        .lang-level {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--text-muted);
+          font-weight: 700;
+        }
+
+        .lang-bar-container {
+          width: 100%;
+          height: 1px;
+          background: var(--border);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .lang-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          background: var(--text-primary);
+        }
+
+        @media (max-width: 1024px) {
+          .languages-grid {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+          }
+        }
+      `}</style>
     </section>
   );
 };

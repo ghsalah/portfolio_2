@@ -1,237 +1,158 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Briefcase, Code2 } from 'lucide-react';
-import profileImg from '../assets/banner/aboobacker_salah_2.jpg';
 
 const About = () => {
-  const stats = [
-    { label: 'Years Experience', value: '3+' },
-    { label: 'Projects Built', value: '10+' },
-    { label: 'Technologies', value: '15+' },
-  ];
-
   return (
-    <section 
-      id="about" 
-      style={{ 
-        background: 'var(--bg-secondary)',
-        padding: '60px 16px', // Reduced padding for mobile
-      }}
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        style={{ marginBottom: '40px' }}
-      >
-        <h2 
-          className="section-title"
-          style={{
-            fontSize: 'clamp(1.8rem, 6vw, 2.5rem)',
-            textAlign: 'center',
-            marginBottom: '0',
-          }}
-        >
-          About <span className="highlight">Me</span>
-        </h2>
-      </motion.div>
+    <section id="about" className="about-section section-padding">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">Identity</span>
+          <h2 className="section-title">THE MERN <br /> SPECIALIST</h2>
+        </div>
 
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column', // Stack on mobile
-        gap: '40px', // Reduced gap for mobile
-        alignItems: 'center',
-        maxWidth: '1200px',
-        margin: '0 auto',
-      }}>
-        {/* Photo - Appears first on mobile */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          style={{ 
-            display: 'flex', 
-            justifyContent: 'center',
-            width: '100%',
-            order: -1, // Move to top on mobile
-          }}
-        >
-          <div style={{ 
-            position: 'relative', 
-            width: '100%', 
-            maxWidth: '300px', // Smaller max-width for mobile
-          }}>
-            <div style={{
-              position: 'absolute',
-              top: '12px',
-              left: '12px',
-              right: '-12px',
-              bottom: '-12px',
-              borderRadius: '16px',
-              border: '2px solid var(--accent-border)',
-            }} />
-            <img
-              src={profileImg}
-              alt="Aboobacker Salah"
-              style={{
-                width: '100%',
-                aspectRatio: '4/5',
-                objectFit: 'cover',
-                objectPosition: 'top center',
-                borderRadius: '16px',
-                display: 'block',
-                position: 'relative',
-                zIndex: 1,
-              }}
-            />
-          </div>
-        </motion.div>
+        <div className="about-content">
+          <div className="about-narrative">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="about-main-text"
+            >
+              MERN Stack Developer with strong experience in building full-stack applications using 
+              React, Node.js, Express.js, and MongoDB. Specialized in developing and integrating 
+              RESTful APIs and implementing scalable state management systems with Redux Toolkit and TypeScript.
+            </motion.p>
 
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          style={{ width: '100%' }}
-        >
-          <p style={{ 
-            fontSize: 'clamp(0.95rem, 4vw, 1.05rem)', 
-            lineHeight: '1.8', 
-            color: 'var(--text-secondary)', 
-            marginBottom: '28px',
-            textAlign: 'center', // Center on mobile
-          }}>
-            I'm a <strong style={{ color: 'var(--text-primary)' }}>Full-Stack Developer</strong> with expertise in the
-            MERN stack, currently working at <strong style={{ color: 'var(--text-primary)' }}>BAIRUHATECH LLP</strong> in
-            Dubai, UAE. I'm passionate about building scalable web applications and turning complex problems into elegant solutions.
-          </p>
-
-          {/* Quick info */}
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            gap: '14px', 
-            marginBottom: '32px',
-            alignItems: 'center', // Center on mobile
-          }}>
-            {[
-              { icon: <MapPin size={18} />, text: 'Dubai, UAE · Available for opportunities' },
-              { icon: <Briefcase size={18} />, text: 'React & MERN Stack Developer at BAIRUHATECH LLP' },
-              { icon: <Code2 size={18} />, text: 'MCA Graduate · AWH Engineering College' },
-            ].map(({ icon, text }, i) => (
-              <div 
-                key={i} 
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', // Center vertically
-                  gap: '12px',
-                  textAlign: 'center',
-                  flexDirection: 'column', // Stack icon and text on very small screens
-                }}
-              >
-                <span style={{ 
-                  color: 'var(--text-primary)', 
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                }}>
-                  {icon}
-                </span>
-                <span style={{ 
-                  color: 'var(--text-secondary)', 
-                  fontSize: 'clamp(0.85rem, 3.5vw, 0.95rem)',
-                  lineHeight: '1.5',
-                }}>
-                  {text}
-                </span>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="about-sub-text-grid"
+            >
+              <div className="sub-text-col">
+                <p>
+                  Experienced in enterprise-level Hospital Management Systems (HMS) and ERP systems.
+                  Proficient in modern JavaScript (ES6+), Next.js, and multi-paradigm backend ecosystems including PHP and NestJS.
+                </p>
+                <p>
+                  Driven by a problem-solving mindset and a passion for strategic planning, 
+                  I focus on delivering clean, efficient, and maintainable code that drives real-world commercial impact.
+                </p>
               </div>
-            ))}
-          </div>
-
-          {/* Stats - 3 columns on mobile too, but smaller */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '12px', // Smaller gap
-          }}>
-            {stats.map(({ label, value }) => (
-              <motion.div
-                key={label}
-                whileHover={{ y: -4 }}
-                style={{
-                  textAlign: 'center',
-                  padding: '16px 8px', // Reduced padding
-                  background: 'var(--bg-card)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '12px',
-                }}
-              >
-                <div style={{ 
-                  fontSize: 'clamp(1.5rem, 6vw, 2rem)', 
-                  fontWeight: '800', 
-                  color: 'var(--text-primary)', 
-                  lineHeight: 1 
-                }}>
-                  {value}
+              
+              <div className="about-details-list">
+                <div className="detail-item">
+                   <span className="detail-label">Current Location</span>
+                   <span className="detail-val">Kozhikode, India</span>
                 </div>
-                <div style={{ 
-                  fontSize: 'clamp(0.7rem, 2.5vw, 0.8rem)', 
-                  color: 'var(--text-muted)', 
-                  marginTop: '4px', 
-                  lineHeight: '1.2' 
-                }}>
-                  {label}
+                <div className="detail-item">
+                   <span className="detail-label">Open For</span>
+                   <span className="detail-val">Strategic Roles • Remote • Relocation</span>
                 </div>
-              </motion.div>
-            ))}
+                <div className="detail-item">
+                   <span className="detail-label">Core Focus</span>
+                   <span className="detail-val">Enterprise Applications</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Desktop Styles */}
       <style>{`
-        @media (min-width: 1024px) {
-          #about {
-            padding: 100px 40px !important;
+        .about-section {
+          background: var(--bg-primary);
+          border-top: 1px solid var(--border);
+        }
+
+        .about-content {
+          margin-top: 6rem;
+        }
+
+        .about-main-text {
+          font-size: var(--fs-3xl);
+          line-height: 1.1;
+          color: var(--text-primary);
+          letter-spacing: -0.04em;
+          margin-bottom: 6rem;
+          font-weight: 800;
+        }
+
+        .about-sub-text-grid {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 10rem;
+        }
+
+        .sub-text-col {
+          display: flex;
+          flex-direction: column;
+          gap: 2.5rem;
+        }
+
+        .sub-text-col p {
+          font-size: var(--fs-lg);
+          color: var(--text-secondary);
+          line-height: 1.6;
+          margin: 0;
+          font-weight: 500;
+        }
+
+        .about-details-list {
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .detail-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          border-bottom: 1.5px solid var(--border);
+          padding-bottom: 1.5rem;
+          transition: var(--transition-base);
+        }
+
+        .detail-item:hover {
+          border-color: var(--text-primary);
+          padding-left: 1rem;
+        }
+
+        .detail-label {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          color: var(--text-muted);
+          font-weight: 700;
+        }
+
+        .detail-val {
+          font-size: var(--fs-base);
+          color: var(--text-primary);
+          font-weight: 800;
+        }
+
+        @media (max-width: 1024px) {
+          .about-main-text {
+            font-size: var(--fs-2xl);
           }
-          #about > div:nth-child(2) {
-            flex-direction: row !important;
-            gap: 60px !important;
-            align-items: center !important;
+          .about-sub-text-grid {
+            grid-template-columns: 1fr;
+            gap: 6rem;
           }
-          #about > div:nth-child(2) > div:first-child {
-            order: 0 !important;
-            flex: 0 0 40% !important;
-            max-width: 380px !important;
-          }
-          #about > div:nth-child(2) > div:last-child {
-            flex: 1 !important;
-            text-align: left !important;
-          }
-          #about > div:nth-child(2) > div:last-child > p {
-            text-align: left !important;
-          }
-          #about > div:nth-child(2) > div:last-child > div:nth-child(2) {
-            align-items: flex-start !important;
-          }
-          #about > div:nth-child(2) > div:last-child > div:nth-child(2) > div {
-            flex-direction: row !important;
-            text-align: left !important;
-          }
-          #about > div:nth-child(2) > div:last-child > div:nth-child(3) {
-            gap: 20px !important;
-          }
-          #about > div:nth-child(2) > div:last-child > div:nth-child(3) > div {
-            padding: 20px 12px !important;
+          .detail-item {
+             border-bottom-width: 1px;
           }
         }
-        @media (max-width: 380px) {
-          #about > div:nth-child(2) > div:last-child > div:nth-child(3) {
-            grid-template-columns: 1fr !important;
-            gap: 10px !important;
+
+        @media (max-width: 768px) {
+          .about-main-text {
+            font-size: var(--fs-xl);
+          }
+          .sub-text-col p {
+            font-size: var(--fs-base);
           }
         }
       `}</style>

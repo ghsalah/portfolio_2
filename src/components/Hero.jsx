@@ -1,304 +1,402 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Download, Github, Linkedin, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import profileImg from '../assets/banner/aboobacker_salah_1.jpg';
 
 const Hero = () => {
-  const reduceMotion = useReducedMotion();
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: reduceMotion ? 0 : 0.08,
-        delayChildren: reduceMotion ? 0 : 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: reduceMotion ? 0 : 0.5, ease: 'easeOut' },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
-      transition: { 
-        duration: reduceMotion ? 0 : 0.8, ease: 'easeOut'
-      } 
-    },
-  };
-
   return (
-    <section
-      id="home"
-  
-  style={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '100px 24px 80px',
-    position: 'relative',
-    overflow: 'hidden',
-  }}
-    >
-      <div className="hero-container">
-        {/* Text Content */}
-        <motion.div
-          className="hero-text-content"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Status Badge */}
-          <motion.div variants={itemVariants}>
-            <div className="status-badge">
-              <span className="pulse-dot" />
-              Available for new projects
-            </div>
-          </motion.div>
-
-          {/* Main Heading */}
-          <motion.div variants={itemVariants} style={{ lineHeight: '1.1' }}>
-            <h1 className="hero-title">Aboobacker Salah</h1>
-            <p className="hero-subtitle">
-              Full-Stack Developer & Digital Craftsman
-            </p>
-          </motion.div>
-
-          {/* Description */}
-          <motion.div variants={itemVariants}>
-            <p className="hero-description">
-              I build beautiful, performant web applications using modern technologies. 
-              Specializing in <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>React</span>, <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Node.js</span>, and <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>full-stack development</span>. 
-              Passionate about clean code and outstanding user experiences.
-            </p>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div variants={itemVariants} className="hero-cta">
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="/Aboobacker_salah_Resume.pdf"
-              download="Aboobacker_Salah_Resume.pdf"
-              className="btn-primary"
+    <section id="home" className="hero-section">
+      <div className="container">
+        <div className="hero-grid">
+          {/* Top Row: Professional Status */}
+          <div className="hero-top">
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="hero-status"
             >
-              <Download size={20} />
-              Download Resume
-            </motion.a>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div variants={itemVariants} className="hero-socials">
-            {[
-              { icon: <Github size={24} />, href: 'https://github.com/ghsalah', label: 'GitHub' },
-              { icon: <Linkedin size={24} />, href: 'https://www.linkedin.com/in/aboobacker-salah-b51b08383/', label: 'LinkedIn' },
-              { icon: <Mail size={24} />, href: 'mailto:aboobackersalah33@gmail.com', label: 'Email' },
-            ].map(({ icon, href, label }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target={href.startsWith('mailto') ? '_self' : '_blank'}
-                rel="noopener noreferrer"
-                whileHover={{ y: -4, backgroundColor: 'var(--text-primary)', color: 'var(--bg-primary)' }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={label}
-                className="social-link"
-              >
-                {icon}
-              </motion.a>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Profile Image */}
-        <motion.div
-          className="hero-image-wrapper"
-          variants={imageVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="hero-image-container">
-            <img
-              src={profileImg}
-              alt="Aboobacker Salah"
-              className="hero-image"
-            />
+              <div className="pulse-container">
+                <div className="status-pulse active"></div>
+              </div>
+              <span className="status-text">Available for New Opportunities / Kerala Based</span>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="hero-specialization"
+            >
+              <span className="spec-label">Specialization:</span>
+              <span className="spec-value">Full-Stack MERN Architect</span>
+            </motion.div>
           </div>
-        </motion.div>
+
+          {/* Middle Row: The Signature & Profile */}
+          <div className="hero-main">
+            <div className="hero-main-flex">
+              <div className="hero-name-container">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 120 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="hero-name"
+                >
+                  ABOOBACKER <br />
+                  <span className="name-highlight">SALAH C</span>
+                </motion.h1>
+              </div>
+              
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 1.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="hero-profile-container"
+              >
+                <img src={profileImg} alt="Aboobacker Salah C" className="hero-profile-img" />
+                <div className="img-overlay-border"></div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Bottom Row: Career Narrative & CTA */}
+          <div className="hero-bottom">
+            <div className="hero-narrative">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="hero-bio"
+              >
+                <p className="bio-text">
+                  MERN Stack Developer skilled in building full-stack applications with 
+                  React, Node.js, and MongoDB. Scalable state management and enterprise 
+                  HMS/ERP experience. Kozhikode, Kerala.
+                </p>
+                
+                <div className="hero-quick-stats">
+                  <div className="quick-stat">
+                    <span className="quick-val">03+</span>
+                    <span className="quick-label">Experience</span>
+                  </div>
+                  <div className="quick-stat">
+                    <span className="quick-val">12+</span>
+                    <span className="quick-label">Projects</span>
+                  </div>
+                </div>
+
+                <div className="hero-links">
+                  <a href="#projects" className="hero-cta-link">View Selected Work</a>
+                  <div className="hero-socials-minimal">
+                    <a href="https://github.com/ghsalah" target="_blank" rel="noreferrer">GitHub</a>
+                    <span>/</span>
+                    <a href="https://linkedin.com/in/salah" target="_blank" rel="noreferrer">LinkedIn</a>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 2, delay: 0.8, ease: "easeOut" }}
+              className="hero-indicator"
+              onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}
+            >
+              <div className="scroll-hint">
+                <span className="hint-text">Scroll to explore</span>
+                <div className="hint-line"></div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
 
-      {/* Styled JSX for robust layout and massive typography */}
       <style>{`
-        .hero-container {
-          max-width: 1400px;
-          width: 100%;
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 60px;
+        .hero-section {
+          min-height: 100vh;
+          display: flex;
           align-items: center;
-          margin: 0 auto;
+          padding: 160px 0 60px;
+          position: relative;
+          background: var(--bg-primary);
         }
 
-        .hero-text-content {
+        .hero-grid {
           display: flex;
           flex-direction: column;
-          gap: 32px;
-          align-items: center;
-          text-align: center;
-        }
-
-        .status-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 10px 20px;
-          background: var(--bg-card-hover);
-          border: 1px solid var(--border);
-          border-radius: 40px;
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: var(--text-primary);
-        }
-
-        .pulse-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: var(--text-primary);
-          animation: ripple 2s linear infinite;
-        }
-
-        .hero-title {
-          font-size: clamp(3rem, 10vw, 5.5rem);
-          font-weight: 400;
-          color: var(--text-primary);
-          letter-spacing: -0.02em;
-          line-height: 1.05;
-          margin-bottom: 12px;
-        }
-
-        .hero-subtitle {
-          font-size: clamp(1.2rem, 3.5vw, 1.8rem);
-          font-weight: 400;
-          color: var(--text-secondary);
-          letter-spacing: -0.01em;
-        }
-
-        .hero-description {
-          font-size: clamp(1.1rem, 2vw, 1.3rem);
-          line-height: 1.6;
-          color: var(--text-secondary);
-          max-width: 600px;
-          font-weight: 400;
-        }
-
-        .hero-cta {
-          margin-top: 24px;
-        }
-
-        .hero-socials {
-          display: flex;
-          gap: 20px;
-          margin-top: 16px;
-          justify-content: center;
-        }
-
-        .social-link {
-          width: 56px;
-          height: 56px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--bg-card);
-          border: 1px solid var(--border);
-          border-radius: 16px;
-          color: var(--text-primary);
-          text-decoration: none;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          cursor: pointer;
-        }
-        
-        .social-link:hover {
-          transform: translateY(-4px) scale(1.05);
-          box-shadow: 0 10px 20px var(--accent-dim);
-          border-color: var(--text-primary);
-        }
-
-        .hero-image-wrapper {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          gap: 6vh;
           width: 100%;
         }
 
-        .hero-image-container {
-          position: relative;
-          width: clamp(240px, 50vw, 380px);
-          aspect-ratio: 0.9;
-          border-radius: 40px;
-          overflow: hidden;
-          background: var(--bg-card);
-          border: 1px solid var(--border);
-          box-shadow: 0 24px 80px -20px var(--accent-dim);
-          transition: box-shadow 0.6s ease;
-        }
-        
-        .hero-image-container:hover {
-          box-shadow: 0 30px 90px -10px var(--accent-dim);
+        .hero-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--border);
+          padding-bottom: 2rem;
         }
 
-        .hero-image {
+        .hero-status {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .pulse-container {
+          width: 8px;
+          height: 8px;
+          position: relative;
+        }
+
+        .status-pulse {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+        
+        .status-pulse.active {
+          background: #4ade80; /* Green for available */
+          box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+          animation: pulseActive 2s infinite;
+        }
+
+        @keyframes pulseActive {
+          0% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.2); opacity: 0.7; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+
+        .status-text, .spec-label, .spec-value {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--text-muted);
+        }
+
+        .spec-value {
+          color: var(--text-primary);
+          margin-left: 0.5rem;
+          font-weight: 700;
+        }
+
+        .hero-main {
+          overflow: hidden;
+        }
+
+        .hero-main-flex {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .hero-name {
+          line-height: 0.85;
+          margin-left: -0.05em;
+          letter-spacing: -0.06em;
+          color: var(--text-primary);
+        }
+
+        .name-highlight {
+           color: var(--text-muted);
+           transition: color 0.6s ease;
+        }
+
+        .hero-name:hover .name-highlight {
+          color: var(--text-primary);
+        }
+
+        .hero-profile-container {
+          width: 280px;
+          height: 380px;
+          position: relative;
+          z-index: 5;
+        }
+
+        .hero-profile-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          display: block;
-          filter: grayscale(10%) contrast(1.05);
-          transition: filter 0.6s ease;
+          filter: grayscale(100%) contrast(1.1);
+          border: 1px solid var(--border);
+          transition: var(--transition-base);
         }
-        
-        .hero-image-container:hover .hero-image {
+
+        .hero-profile-container:hover .hero-profile-img {
           filter: grayscale(0%) contrast(1);
+          transform: translateY(-10px);
         }
 
-        @keyframes ripple {
-          0% { box-shadow: 0 0 0 0 rgba(100, 100, 100, 0.5); }
-          70% { box-shadow: 0 0 0 6px transparent; }
-          100% { box-shadow: 0 0 0 0 transparent; }
+        .img-overlay-border {
+          position: absolute;
+          top: 20px;
+          right: -20px;
+          width: 100%;
+          height: 100%;
+          border: 1px solid var(--text-primary);
+          z-index: -1;
+          transition: var(--transition-base);
         }
 
-        @media (min-width: 1100px) {
-          .hero-container {
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
+        .hero-profile-container:hover .img-overlay-border {
+          top: 10px;
+          right: -10px;
+        }
+
+        .hero-bottom {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          align-items: end;
+          margin-top: 4vh;
+        }
+
+        .hero-narrative {
+          max-width: 650px;
+        }
+
+        .bio-text {
+          font-size: var(--fs-lg);
+          color: var(--text-secondary);
+          line-height: 1.5;
+          margin-bottom: 3rem;
+          max-width: 500px;
+        }
+
+        .hero-quick-stats {
+          display: flex;
+          gap: 4rem;
+          margin-bottom: 4rem;
+        }
+
+        .quick-stat {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .quick-val {
+          font-size: var(--fs-xl);
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+
+        .quick-label {
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--text-muted);
+          font-weight: 700;
+        }
+
+        .hero-links {
+          display: flex;
+          align-items: center;
+          gap: 3.5rem;
+        }
+
+        .hero-cta-link {
+          font-size: var(--fs-sm);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--text-primary);
+          text-decoration: none;
+          padding-bottom: 0.5rem;
+          border-bottom: 1.5px solid var(--text-primary);
+          transition: var(--transition-base);
+          font-weight: 700;
+        }
+
+        .hero-cta-link:hover {
+          padding-right: 2rem;
+          border-bottom-color: var(--text-muted);
+        }
+
+        .hero-socials-minimal {
+          display: flex;
+          gap: 1rem;
+          color: var(--text-muted);
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+
+        .hero-socials-minimal a {
+          text-decoration: none;
+          color: var(--text-muted);
+          transition: color 0.3s ease;
+        }
+
+        .hero-socials-minimal a:hover {
+          color: var(--text-primary);
+        }
+
+        .hero-indicator {
+          cursor: pointer;
+        }
+
+        .scroll-hint {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .hint-text {
+          writing-mode: vertical-rl;
+          font-size: var(--fs-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.3em;
+          color: var(--text-muted);
+          font-weight: 700;
+          animation: bounceHint 2s infinite;
+        }
+
+        .hint-line {
+          width: 1.5px;
+          height: 100px;
+          background: linear-gradient(to bottom, var(--border), transparent);
+        }
+
+        @keyframes bounceHint {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(15px); }
+        }
+
+        @media (max-width: 1024px) {
+          .hero-bottom {
+            grid-template-columns: 1fr;
+            gap: 6rem;
           }
-
-          .hero-text-content {
+           .hero-main-flex {
+            flex-direction: column-reverse;
             align-items: flex-start;
-            text-align: left;
+            gap: 4rem;
           }
+          .hero-indicator {
+            display: none;
+          }
+          .hero-top {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+          }
+        }
 
-          .hero-description {
-            max-width: 500px;
+        @media (max-width: 768px) {
+          .hero-section {
+            padding-top: 140px;
           }
-
-          .hero-socials {
-            justify-content: flex-start;
+          .hero-quick-stats {
+            gap: 2rem;
           }
-          
-          .hero-image-container {
-            width: 100%;
-            max-width: 380px;
+          .hero-links {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2rem;
+          }
+          .hero-name {
+            font-size: var(--fs-huge);
           }
         }
       `}</style>

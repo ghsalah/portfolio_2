@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './App.css';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
@@ -14,18 +15,39 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { ArrowUp } from 'lucide-react';
 
-function App() {
+const AppContent = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 400);
+    
+    // Intersection Observer for .reveal sections
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section-padding').forEach(section => {
+      observer.observe(section);
+    });
+
     window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <ThemeProvider>
-      <div className="App">
+    <div className="App">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <Navbar />
         <div className="page-content">
           <Hero />
@@ -45,9 +67,17 @@ function App() {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Scroll to top"
         >
-          <ArrowUp size={24} />
+          <ArrowUp size={24} strokeWidth={1.5} />
         </button>
-      </div>
+      </motion.div>
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
     </ThemeProvider>
   );
 }
