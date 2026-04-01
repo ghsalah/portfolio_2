@@ -15,8 +15,11 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { ArrowUp } from 'lucide-react';
 
+import Preloader from './components/Preloader';
+
 const AppContent = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 400);
@@ -43,33 +46,40 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <Navbar />
-        <div className="page-content">
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Education />
-          <Skills />
-          <Certifications />
-          <Languages />
-          <Contact />
-          <Footer />
-        </div>
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <Preloader key="loader" finishLoading={() => setIsLoading(false)} />
+        ) : (
+          <motion.div 
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <Navbar />
+            <div className="page-content">
+              <Hero />
+              <About />
+              <Experience />
+              <Projects />
+              <Education />
+              <Skills />
+              <Certifications />
+              <Languages />
+              <Contact />
+              <Footer />
+            </div>
 
-        <button
-          className={`scroll-top ${showScrollTop ? 'visible' : ''}`}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          aria-label="Scroll to top"
-        >
-          <ArrowUp size={24} strokeWidth={1.5} />
-        </button>
-      </motion.div>
+            <button
+              className={`scroll-top ${showScrollTop ? 'visible' : ''}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              aria-label="Scroll to top"
+            >
+              <ArrowUp size={24} strokeWidth={1.5} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
