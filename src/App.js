@@ -48,7 +48,7 @@ const AppContent = () => {
     <div className="App">
       <AnimatePresence mode="wait">
         {isLoading ? (
-          <Preloader key="loader" finishLoading={() => setIsLoading(false)} />
+          <Preloader key="loader" onComplete={() => setIsLoading(false)} />
         ) : (
           <motion.div 
             key="content"
