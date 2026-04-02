@@ -363,7 +363,7 @@ const Hero = () => {
           50% { transform: translateY(15px); }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .hero-bottom {
             grid-template-columns: 1fr;
             gap: 6rem;

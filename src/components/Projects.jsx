@@ -1,37 +1,37 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import img1 from '../assets/projects/imgProj_1.jpg';
-import img2 from '../assets/projects/imgProj_2.jpg';
-import img3 from '../assets/projects/imgProj_3.jpg';
+import img1 from '../assets/projects/Talent_trove.jpg';
+import img2 from '../assets/projects/Medi_Core.jpg';
+import img3 from '../assets/projects/Carty_fly.jpg';
 
 const Projects = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const projects = [
     {
-      title: 'ECO-CONNECT',
-      category: 'Sustainability / MERN Stack',
-      year: '2024',
-      description: 'A comprehensive platform for environmental tracking and community engagement. Built with high-performance Node.js architecture and a refined React interface.',
-      image: img1,
-      link: '#'
-    },
-    {
-      title: 'MIND-EASE',
-      category: 'Healthcare / React Native',
-      year: '2024',
-      description: 'Mental wellness ecosystem featuring real-time tracking and professional consultation. Focused on extreme privacy and a calming minimalist UX.',
-      image: img2,
-      link: '#'
-    },
-    {
-      title: 'SWIFT-CART',
-      category: 'E-commerce / Next.js',
+      title: 'SHOPYFY',
+      category: 'E-commerce Website',
       year: '2023',
-      description: 'Enterprise-grade shopping platform with advanced state management and high-conversion payment flows. Optimized for speed and scalability.',
+      description: 'Enterprise-grade e-commerce platform with advanced state management and high-conversion payment flows. Optimized for speed and scalability.',
       image: img3,
-      link: '#'
+      link: 'https://github.com/ghsalah/Carty_fly'
+    },
+    {
+      title: 'TALENT TROVE',
+      category: 'Freelance Platform',
+      year: '2024',
+      description: 'A comprehensive freelance platform connecting skilled professionals with clients. Built with seamless project management and secure payment tracking tools.',
+      image: img1,
+      link: '/404'
+    },
+    {
+      title: 'MEDICORE',
+      category: 'Hospital Management',
+      year: '2024',
+      description: 'An advanced hospital management system streamlining administrative and clinical operations from patient registration to secure health records.',
+      image: img2,
+      link: '/404'
     }
   ];
 
@@ -305,7 +305,7 @@ const Projects = () => {
           }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .project-hover-reveal {
             display: none;
           }

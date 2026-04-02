@@ -11,7 +11,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     const handleResize = () => {
-      if (window.innerWidth > 1024) {
+      if (window.innerWidth > 960) {
         setIsOpen(false);
       }
     };
@@ -23,6 +23,17 @@ const Navbar = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const navLinks = [
     { name: 'About', href: '#about' },
@@ -286,7 +297,7 @@ const Navbar = () => {
           font-weight: 700;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .nav-desktop {
             display: none;
           }

@@ -132,7 +132,7 @@ const Footer = () => {
           font-weight: 700;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .footer-grid {
             grid-template-columns: 1fr;
             gap: 6rem;

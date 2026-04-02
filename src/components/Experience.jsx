@@ -197,7 +197,7 @@ const Experience = () => {
           width: 2.5rem;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .experience-item {
             gap: 4rem;
           }

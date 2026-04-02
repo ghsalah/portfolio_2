@@ -79,7 +79,7 @@ a:hover, button:hover {
 }
 
 /* ─── Responsive Fine-tuning ─────────────────────────────── */
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .scroll-top {
     bottom: 3rem;
     right: 3rem;

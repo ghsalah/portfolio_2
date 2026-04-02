@@ -207,7 +207,7 @@ const Contact = () => {
           padding-right: 1.5rem;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .contact-grid {
             grid-template-columns: 1fr;
             gap: 6rem;

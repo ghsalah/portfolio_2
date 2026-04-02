@@ -100,7 +100,7 @@ const Languages = () => {
           background: var(--text-primary);
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .languages-grid {
             grid-template-columns: 1fr;
             gap: 4rem;

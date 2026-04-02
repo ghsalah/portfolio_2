@@ -134,7 +134,7 @@ const About = () => {
           font-weight: 800;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .about-main-text {
             font-size: var(--fs-2xl);
           }

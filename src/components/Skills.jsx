@@ -112,7 +112,7 @@ const Skills = () => {
           color: var(--text-primary);
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 960px) {
           .skills-grid {
             gap: 4rem;
           }
