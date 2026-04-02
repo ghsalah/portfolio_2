@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import profileImg from '../assets/banner/aboobacker_salah_1.jpg';
 
 const Hero = () => {
