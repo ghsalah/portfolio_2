@@ -88,6 +88,7 @@ const Hero = () => {
 
                 <div className="hero-links">
                   <a href="#projects" className="hero-cta-link">View Selected Work</a>
+                  <a href="/Aboobacker_salah_Resume.pdf" download className="hero-cta-link">Download Resume</a>
                   <div className="hero-socials-minimal">
                     <a href="https://github.com/ghsalah" target="_blank" rel="noreferrer">GitHub</a>
                     <span>/</span>

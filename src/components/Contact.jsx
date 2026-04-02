@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const contactInfo = [
@@ -15,6 +15,12 @@ const Contact = () => {
       label: 'Phone',
       value: '+91 8590660040',
       href: 'tel:+918590660040'
+    },
+    {
+      icon: <MessageCircle size={24} />,
+      label: 'WhatsApp',
+      value: '+91 8590660040',
+      href: 'https://wa.me/918590660040'
     },
     {
       icon: <MapPin size={24} />,
