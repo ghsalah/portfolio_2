@@ -80,7 +80,7 @@ const Contact = () => {
               <span className="social-label">Follow Me</span>
               <div className="social-group">
                 <a href="https://github.com/ghsalah" target="_blank" rel="noreferrer" className="social-link">Github</a>
-                <a href="https://linkedin.com/in/salah" target="_blank" rel="noreferrer" className="social-link">LinkedIn</a>
+                <a href="https://linkedin.com/in/aboobacker-salah" target="_blank" rel="noreferrer" className="social-link">LinkedIn</a>
               </div>
             </div>
           </motion.div>
